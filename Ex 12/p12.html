@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP2 12</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .papa {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .box {
+      background-color: #3498db;
+      color: white;
+      padding: 12px;
+      text-align: center;
+      border-radius: 6px;
+    }
+
+    .papa.large {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  </style>
+</head>
+<body>
+
+
+  <div id="papa" class="papa">
+    <div class="box">Boîte 1</div>
+    <div class="box">Boîte 2</div>
+    <div class="box">Boîte 3</div>
+    <div class="box">Boîte 4</div>
+  </div>
+
+  <script>
+    const papa = document.getElementById('papa');
+
+    function ajusterLayout() {
+      if (window.innerWidth >= 600) {
+        papa.classList.add('large');
+      } else {
+        papa.classList.remove('large');
+      }
+    }
+
+    window.addEventListener('resize', ajusterLayout);
+    ajusterLayout();
+  </script>
+
+</body>
+</html>

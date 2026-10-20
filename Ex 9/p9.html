@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP2 9</title>
+
+    <style>
+
+        .todo {
+            width: 350px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 5px solid black;
+            box-shadow: 5px 5px 5px gray;
+        }
+
+        #tache {
+            width: 210px;
+            height: 25px;
+        }
+
+        #ajouter {
+            height: 30px;
+        }
+
+        li {
+            margin: 10px;
+        }
+
+        button {
+            margin-left: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="todo">
+
+        <input type="text" id="tache" placeholder="Ajouter une tâche">
+
+        <button id="ajouter">Ajouter</button>
+
+        <ul id="liste">
+
+        </ul>
+
+    </div>
+
+    <script>
+
+        var tache = document.getElementById("tache");
+        var ajouter = document.getElementById("ajouter");
+        var liste = document.getElementById("liste");
+
+        ajouter.onclick = function() {
+
+            if (tache.value != "") {
+
+                var li = document.createElement("li");
+
+                li.innerHTML = tache.value;
+
+                var terminer = document.createElement("button");
+
+                terminer.innerHTML = "Terminer";
+
+                var supprimer = document.createElement("button");
+
+                supprimer.innerHTML = "Supprimer";
+
+                li.appendChild(terminer);
+                li.appendChild(supprimer);
+
+                liste.appendChild(li);
+
+                terminer.onclick = function() {
+
+                    if (li.style.textDecoration == "line-through") {
+                        li.style.textDecoration = "none";
+                    }
+                    else {
+                        li.style.textDecoration = "line-through";
+                    }
+
+                };
+
+                supprimer.onclick = function() {
+                    li.remove();
+                };
+
+                tache.value = "";
+
+            }
+
+        };
+
+    </script>
+
+</body>
+</html>

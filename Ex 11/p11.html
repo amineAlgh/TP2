@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP2 11</title>
+</head>
+<body>
+
+    <h2>Liste des produits</h2>
+
+    <input type="text" id="recherche" placeholder="Rechercher un produit">
+
+    <ul id="liste">
+        <li>Ordinateur</li>
+        <li>Téléphone</li>
+        <li>Clavier</li>
+        <li>Souris</li>
+        <li>Écran</li>
+    </ul>
+
+    <script>
+        let recherche = document.getElementById("recherche");
+        let liste = document.getElementById("liste");
+        let produits = liste.getElementsByTagName("li");
+
+        recherche.oninput = function() {
+            for (let i = 0; i < produits.length; i++) {
+                if (produits[i].textContent.toLowerCase().includes(recherche.value.toLowerCase())) {
+                    produits[i].style.display = "list-item";
+                } else {
+                    produits[i].style.display = "none";
+                }
+            }
+        };
+    </script>
+
+</body>
+</html>

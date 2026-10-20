@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP2 5</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+        }
+
+        img {
+            width: 400px;
+            height: 250px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ma galerie d'images</h1>
+
+    <img id="image" src="image1.png">
+
+    <br>
+
+    <button id="precedent">Précédent</button>
+    <button id="suivant">Suivant</button>
+
+    <script>
+var i = 1;
+
+var image = document.getElementById("image");
+var suivant = document.getElementById("suivant");
+var precedent = document.getElementById("precedent");
+
+suivant.onclick = function() {
+
+    i = i + 1;
+
+    if (i > 3) {
+        i = 1;
+    }
+
+    if (i == 1) {
+        image.src = "image1.png";
+    }
+    else if (i == 2) {
+        image.src = "image2.png";
+    }
+    else if (i == 3) {
+        image.src = "image3.jpg";
+    }
+
+};
+
+precedent.onclick = function() {
+
+    i = i - 1;
+
+    if (i < 1) {
+        i = 3;
+    }
+
+    if (i == 1) {
+        image.src = "image1.png";
+    }
+    else if (i == 2) {
+        image.src = "image2.png";
+    }
+    else if (i == 3) {
+        image.src = "image3.jpg";
+    }
+
+};
+    </script>
+
+</body>
+</html>

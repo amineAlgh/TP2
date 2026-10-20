@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP2 13</title>
+
+    <style>
+        .barre {
+            width: 300px;
+            height: 25px;
+            background-color: lightgray;
+            margin-bottom: 15px;
+        }
+
+        #progression {
+            width: 0%;
+            height: 25px;
+            background-color: green;
+        }
+       
+    </style>
+</head>
+<body>
+
+    <h2>Barre de progression</h2>
+
+    <div class="barre">
+        <div id="progression"></div>
+    </div>
+
+    <p id="pourcentage">0%</p>
+
+    <button id="demarrer">Demarrer</button>
+
+    <script>
+        let progression = document.getElementById("progression");
+        let pourcentage = document.getElementById("pourcentage");
+        let valeur = 0;
+        let intervalle;
+let btnD = document.getElementById("demarrer");
+    btnD.onclick = function() {
+            if (valeur < 100) {
+                clearInterval(intervalle);
+
+                intervalle = setInterval(function() {
+                    if (valeur < 100) {
+                        valeur = valeur + 1;
+                        progression.style.width = valeur + "%";
+                        pourcentage.innerHTML = valeur + "%";
+                    } else {
+                        clearInterval(intervalle);
+                    }
+                }, 30);
+            }
+        }
+    </script>
+
+</body>
+</html>

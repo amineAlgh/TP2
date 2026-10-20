@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP2 10</title>
+
+    <style>
+        .modal {
+            display: none;
+            background-color: white;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid black;
+            text-align: center;
+            margin: 100px auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="ouvrir">Ouvrir</button>
+
+    <div class="modal" id="modal">
+        <h2>Notification</h2>
+        <p>Bienvenue ! voila votre notification.</p>
+        <button id="fermer">Fermer</button>
+    </div>
+
+    <script>
+       let btnO = document.getElementById("ouvrir");
+       let modal =  document.getElementById("modal");
+       let btnF = document.getElementById("fermer");
+
+        btnO.onclick = function () {
+          modal .style.display = "block";
+        }
+
+        btnF.onclick = function() {
+           modal.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

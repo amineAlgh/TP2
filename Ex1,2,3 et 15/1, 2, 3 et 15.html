@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP2 1,2 et 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <p id="text">
+    I like Pizza ! 
+        </p>
+        <label name="nom" id="nom">Nom : </label>
+        <input type="text" id="input1">
+        <br>
+        <label id="email">E-mail : </label>
+        <input type="text" id="input2">
+        <button id="submit"> Submit</button>
+        <br>
+        <div class="di2">
+        <p id="warning"></p>
+        </div>
+    </div>
+    
+    <button class="Btn">Changer La couleur </button>
+<button id="Btn2"> Afficher / Masquer </button>
+
+
+
+    <script>
+let btn = document.getElementsByClassName("Btn") ;
+let divv = document.getElementsByClassName("container") ;
+let para = document.getElementById("text") ;
+let temp = false;
+let btn2 = document.getElementById("Btn2");
+let temp2 = false;
+let btn3 = document.getElementById("submit");
+let nom = document.getElementById("nom");
+let email = document.getElementById("email");
+let input1 = document.getElementById("input1");
+let input2 = document.getElementById("input2");
+
+let warning = document.getElementById("warning");
+  input1.style.backgroundColor="black";
+  input2.style.backgroundColor="black";
+    input1.style.borderColor="white";
+    input2.style.borderColor="white";
+    input2.style.borderRadius="20px";
+    input1.style.borderRadius="20px";
+   
+input1.style.color = "white";
+   input2.style.color = "white";
+btn[0].onclick = function() {
+    if(temp == false){ 
+    divv[0].style.backgroundColor= "#121212" ;
+    para.style.color="white";
+    nom.style.color="white";
+    email.style.color="white";
+   input1.style.backgroundColor="white";
+    input2.style.backgroundColor="white";
+    input1.style.color="black";
+      input2.style.color="black";
+    temp = true;
+        }else{
+             divv[0].style.backgroundColor="white";
+    para.style.color="black";
+ nom.style.color="black";
+    email.style.color="black";
+    input1.style.backgroundColor="black";
+    input2.style.backgroundColor="black";
+      input1.style.color="white";
+        input2.style.color="white";
+    temp = false;
+        }
+
+}
+btn2.onclick = function() {
+if(!temp2){
+    para.textContent = "‎ ";
+    temp2=true;
+}else{
+    para.textContent = "I like Pizza !";
+    temp2=false;
+}
+}
+btn3.onclick = function() {
+   let v1 = input1.value;
+    let v2 = input2.value;
+  if(v1 === "" && v2 ===""){
+ 
+    warning.textContent = "Nom Vide et E-mail vide";
+  }else if(v1 === ""){
+    warning.textContent = "Nonm vide";
+  }else if(v2 === "")
+   {
+    warning.textContent = "Email vide";
+   }else{
+    warning.textContent = "email et nom remplis";
+   }
+}
+
+    </script>
+</body>
+</html>

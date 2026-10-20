@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP2 6</title>
+
+    <style>
+
+        .menu {
+            width: 200px;
+            margin: 50px auto;
+        }
+
+        .titre {
+            background-color: black;
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .contenu {
+            display: none;
+            background-color: lightgray;
+        }
+
+        .contenu p {
+            margin: 0;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="menu">
+
+        <div id="titre" class="titre">
+            Menu
+        </div>
+
+        <div id="contenu" class="contenu">
+
+            <p>Accueil</p>
+            <p>À propos</p>
+            <p>Contact</p>
+
+        </div>
+
+    </div>
+
+    <script>
+var titre = document.getElementById("titre");
+var contenu = document.getElementById("contenu");
+
+titre.onclick = function() {
+
+    if (contenu.style.display == "none") {
+        contenu.style.display = "block";
+    }
+    else {
+        contenu.style.display = "none";
+    }
+
+};
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP2 14</title>
+
+    <style>
+        .boite {
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            display: inline-block;
+            margin: 20px;
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        .element {
+            background-color: lightblue;
+            padding: 15px;
+            margin: 10px;
+            cursor: grab;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Glisser-déposer</h2>
+
+    <div class="boite" id="boite1" ondragover="autoriser(event)" ondrop="deposer(event)">
+        <div class="element" id="element1" draggable="true" ondragstart="commencer(event)">
+            Élément 1
+        </div>
+        <div class="element" id="element2" draggable="true" ondragstart="commencer(event)">
+            Élément 2
+        </div>
+    </div>
+
+    <div class="boite" id="boite2" ondragover="autoriser(event)" ondrop="deposer(event)">
+    </div>
+
+    <script>
+        function commencer(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function autoriser(event) {
+            event.preventDefault();
+        }
+
+        function deposer(event) {
+            event.preventDefault();
+
+            let id = event.dataTransfer.getData("text");
+            let element = document.getElementById(id);
+
+            event.currentTarget.appendChild(element);
+        }
+    </script>
+
+</body>
+</html>

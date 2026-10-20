@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP2 8</title>
+
+    <style>
+
+        #carre {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            margin: 100px auto;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="carre"></div>
+
+    <script>
+
+        var carre = document.getElementById("carre");
+
+        carre.onmouseover = function() {
+            carre.style.backgroundColor = "red";
+        };
+
+        carre.onmouseout = function() {
+            carre.style.backgroundColor = "blue";
+        };
+
+    </script>
+
+</body>
+</html>
