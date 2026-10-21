@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP2 4</title>
+    <style>
+
+.papa{
+    display: flex;
+padding: 20px;
+
+}
+.calc{
+    height: 500px;
+    width: 300px;
+background-color: gray;
+border : 2px black solid;
+padding: 20px;
+border-radius: 20px;
+
+grid-template-columns: repeat(4, 1fr);
+align-content: end;
+display:grid;
+gap:15px;
+
+}
+#btn0{
+    grid-column: 2 span;
+}
+.calc button{
+width: 100%;
+            height: 50px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+}
+.resultats {
+            grid-column: span 4;
+            height: 60px;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 50px;}
+
+    </style>
+</head>
+<body>
+    
+    <div class="papa">
+<div class="calc">
+<div class="resultats"></div>
+
+            <button id="btnC">C</button>
+            <button id="btnErase">⌫</button>
+            <button id="btnD">/</button>
+            <button id="btnMulti">*</button>
+
+          
+         
+           
+             
+               <button id="btn7">7</button>
+                  <button id="btn8">8</button>
+                   <button id="btn9">9</button>
+  <button id="btnMoins">-</button>
+
+               <button id="btn4">4</button>
+                       <button id="btn5">5</button>
+            <button id="btn6">6</button>
+            <button id="btnPlus">+</button>
+
+            <button id="btn1">1</button>
+             <button id="btn2">2</button>
+            <button id="btn3">3</button>
+           
+            <button id="btnEgale">=</button>
+
+            <button id="btn0">0</button>
+            <button id="btnPoint">.</button>
+
+        </div>
+    </div>
+
+    <script>
+        let resultat = document.querySelector(".resultats");
+
+let premierNombre = "";
+let operateur = "";
+let deuxiemeNombre = "";
+
+let chiffres = ["btn0", "btn1", "btn2", "btn3", "btn4", "btn5", "btn6", "btn7", "btn8", "btn9"];
+
+chiffres.forEach(function(id) {
+    document.getElementById(id).onclick = function() {
+        let chiffre = this.textContent.trim();
+
+        if (operateur === "") {
+            premierNombre += chiffre;
+        } else {
+            deuxiemeNombre += chiffre;
+        }
+
+        afficherEcran();
+    };
+});
+
+document.getElementById("btnPoint").onclick = function() {
+    if (operateur === "") {
+        if (!premierNombre.includes(".")) {
+            if (premierNombre === "") premierNombre = "0";
+            premierNombre += ".";
+        }
+    } else {
+        if (!deuxiemeNombre.includes(".")) {
+            if (deuxiemeNombre === "") deuxiemeNombre = "0";
+            deuxiemeNombre += ".";
+        }
+    }
+    afficherEcran();
+};
+
+function choisirOperateur(op) {
+    if (premierNombre !== "" && deuxiemeNombre === "") {
+        operateur = op;
+        afficherEcran();
+    }
+}
+
+document.getElementById("btnPlus").onclick = function() { choisirOperateur("+"); };
+document.getElementById("btnMoins").onclick = function() { choisirOperateur("-"); };
+document.getElementById("btnMulti").onclick = function() { choisirOperateur("×"); };
+document.getElementById("btnD").onclick = function() { choisirOperateur("÷"); };
+
+document.getElementById("btnEgale").onclick = function() {
+    if (premierNombre === "" || operateur === "" || deuxiemeNombre === "") {
+        return;
+    }
+
+    let n1 = parseFloat(premierNombre);
+    let n2 = parseFloat(deuxiemeNombre);
+    let total = 0;
+
+    if (operateur === "+") {
+        total = n1 + n2;
+    } else if (operateur === "-") {
+        total = n1 - n2;
+    } else if (operateur === "×") {
+        total = n1 * n2;
+    } else if (operateur === "÷") {
+        if (n2 === 0) {
+            resultat.textContent = "Erreur";
+            reinitialiser();
+            return;
+        }
+        total = n1 / n2;
+    }
+
+    resultat.textContent = total;
+
+    premierNombre = total.toString();
+    operateur = "";
+    deuxiemeNombre = "";
+};
+
+document.getElementById("btnC").onclick = function() {
+    reinitialiser();
+    resultat.textContent = "0";
+};
+
+document.getElementById("btnErase").onclick = function() {
+    if (deuxiemeNombre !== "") {
+        deuxiemeNombre = deuxiemeNombre.slice(0, -1);
+    } else if (operateur !== "") {
+        operateur = "";
+    } else if (premierNombre !== "") {
+        premierNombre = premierNombre.slice(0, -1);
+    }
+    afficherEcran();
+};
+
+function afficherEcran() {
+    let texte = premierNombre + operateur + deuxiemeNombre;
+    resultat.textContent = texte || "0";
+}
+
+function reinitialiser() {
+    premierNombre = "";
+    operateur = "";
+    deuxiemeNombre = "";
+}
+    </script>
+   
+</body>
+</html>
